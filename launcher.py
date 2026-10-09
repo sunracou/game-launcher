@@ -107,11 +107,12 @@ class GameDialog(Gtk.Dialog):
     def get_game(self):
         return {k:e.get_text().strip() for k,e in self.entries.items()}
 
+# Wine Tools
 class SettingsDialog(Gtk.Dialog):
     def __init__(self,parent):
         super().__init__(title="Wine tools",transient_for=parent,flags=0)
         box=self.get_content_area(); box.set_margin_top(12); box.set_margin_bottom(12)
-        tools=[("winecfg","winecfg"),("winetricks","winetricks"),("Wine Uninstaller","wine uninstaller"),("Registry","wine regedit"),("File Explorer","wine explorer"),("Command Prompt","wine cmd")]
+        tools=[("winecfg","winecfg"),("winetricks","winetricks"),("Wine Uninstaller","wine uninstaller"),("Registry","wine regedit"),("File Explorer","wine explorer"),("Task Manager","wine taskmgr")]
         for label,cmd in tools:
             b=Gtk.Button(label=label); b.set_margin_start(12); b.set_margin_end(12); b.connect("clicked",self.run_tool,cmd); box.pack_start(b,False,False,3)
         self.show_all()

@@ -1,6 +1,6 @@
 # Game Launcher
 
-A simple GUI windows game launcher via Wine for Debian 11/12/13 and Ubuntu 22.04 / 24.04 / 26.04
+A launcher for Windows game executables with a simple graphical interface via Wine for Debian 11/12/13 and Ubuntu 22.04 / 24.04 / 26.04
 
 # Copyright (C) 2026
 

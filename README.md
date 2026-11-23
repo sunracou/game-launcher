@@ -12,7 +12,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 ## Install
 
-Check dependencies from a terminal
+Check dependencies
 ```bash
 sudo apt update
 sudo apt install python3 python3-gi gir1.2-gtk-3.0

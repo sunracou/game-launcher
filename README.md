@@ -1,6 +1,6 @@
 # Game Launcher
 
-A simple GTK3 launcher for Linux/Windows games via Wine.
+A simple GUI windows game launcher via Wine.
 
 # Copyright (C) 2026
 

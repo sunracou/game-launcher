@@ -12,9 +12,14 @@ You should have received a copy of the GNU General Public License along with thi
 
 ## Install
 
+Check dependencies from a terminal
 ```bash
 sudo apt update
 sudo apt install python3 python3-gi gir1.2-gtk-3.0
+```
+
+From the installation folder
+```bash
 cd game-launcher
 chmod +x install.sh
 ./install.sh
@@ -26,4 +31,4 @@ chmod +x install.sh
 game-launcher
 ```
 
-The data is saved in `~/.config/game-launcher/games.json`
+The data is stored in `~/.config/game-launcher/games.json`

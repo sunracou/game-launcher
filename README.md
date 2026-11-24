@@ -1,6 +1,6 @@
 # Game Launcher
 
-A launcher with a simple graphical interface that lets you organize your Windows and Linux games into a graphical library and launch them using the corresponding Wine configuration. Includes a “Wine Tools” menu that provides quick access to several Wine tools.
+A launcher with a simple graphical interface that lets you organize your Windows and Linux games into a graphical library with customizable game covers and launch them using the corresponding Wine configuration. Game shortcuts are fully customizable. Includes a “Wine Tools” menu that provides quick access to several Wine tools.
 
 Supported systems :
 - Debian 11 / 12 / 13

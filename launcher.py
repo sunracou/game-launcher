@@ -100,19 +100,18 @@ class GameDialog(Gtk.Dialog):
             path=dialog.get_filename()
             directory=os.path.dirname(path) or "."
             filename=os.path.basename(path)
-            # Keep the architecture sh -c "cd ... && wine ...".
             entry.set_text('sh -c "cd %s && wine %s"' % (shlex.quote(directory), shlex.quote(filename)))
         dialog.destroy()
 
     def get_game(self):
         return {k:e.get_text().strip() for k,e in self.entries.items()}
 
-# Wine Tools
+# Tools
 class SettingsDialog(Gtk.Dialog):
     def __init__(self,parent):
-        super().__init__(title="Wine tools",transient_for=parent,flags=0)
+        super().__init__(title="Tools",transient_for=parent,flags=0)
         box=self.get_content_area(); box.set_margin_top(12); box.set_margin_bottom(12)
-        tools=[("winecfg","winecfg"),("winetricks","winetricks"),("Wine Uninstaller","wine uninstaller"),("Registry","wine regedit"),("File Explorer","wine explorer"),("Task Manager","wine taskmgr")]
+        tools=[("winecfg","winecfg"),("winetricks","winetricks"),("Wine Uninstaller","wine uninstaller"),("Registry","wine regedit"),("File Explorer","wine explorer"),("Task Manager","wine taskmgr"),("Screen Recorder","simplescreenrecorder --logfile")]
         for label,cmd in tools:
             b=Gtk.Button(label=label); b.set_margin_start(12); b.set_margin_end(12); b.connect("clicked",self.run_tool,cmd); box.pack_start(b,False,False,3)
         self.show_all()
@@ -123,7 +122,7 @@ class SettingsDialog(Gtk.Dialog):
 
 class MainWindow(Gtk.Window):
     def __init__(self):
-        super().__init__(title="Game Launcher",default_width=900,default_height=600)
+        super().__init__(title="Game Launcher 1.9.2",default_width=900,default_height=600)
         self.games=load_games(); self.sort_key="name"; self.view_mode="grid"; self.zoom="small"
         self.connect("destroy",Gtk.main_quit)
         root=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=6); self.add(root)
@@ -132,7 +131,7 @@ class MainWindow(Gtk.Window):
         add=Gtk.Button(label="＋ Add"); add.connect("clicked",self.add_game); toolbar.pack_start(add,False,False,0)
         edit=Gtk.Button(label="Modify"); edit.connect("clicked",self.edit_game); toolbar.pack_start(edit,False,False,0)
         delete=Gtk.Button(label="Remove"); delete.connect("clicked",self.delete_game); toolbar.pack_start(delete,False,False,0)
-        wine=Gtk.Button(label="Wine tools"); wine.connect("clicked",lambda *_:SettingsDialog(self).run()); toolbar.pack_end(wine,False,False,0)
+        wine=Gtk.Button(); wine.set_image(Gtk.Image.new_from_icon_name("preferences-system" if Gtk.IconTheme.get_default().has_icon("preferences-system") else "emblem-system",Gtk.IconSize.BUTTON)); wine.set_tooltip_text("Tools"); wine.connect("clicked",lambda *_:SettingsDialog(self).run()); toolbar.pack_end(wine,False,False,0)
         self.view_list=Gtk.Button(); self.view_list.set_image(Gtk.Image.new_from_icon_name("view-list",Gtk.IconSize.BUTTON)); self.view_list.set_tooltip_text("List view"); self.view_list.connect("clicked",lambda *_:self.set_view("list")); toolbar.pack_end(self.view_list,False,False,0)
         self.view_grid=Gtk.Button(); self.view_grid.set_image(Gtk.Image.new_from_icon_name("view-grid",Gtk.IconSize.BUTTON)); self.view_grid.set_tooltip_text("Grid view"); self.view_grid.connect("clicked",lambda *_:self.set_view("grid")); toolbar.pack_end(self.view_grid,False,False,0)
         self.zoom_combo=Gtk.ComboBoxText()

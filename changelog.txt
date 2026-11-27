@@ -1,0 +1,16 @@
+1.9.2
+
+Replace the “Wine Tools” button with an icon
+Add a “Screen Recorder” button to the “Tools” menu
+
+
+1.9.1
+
+Add a “Task Manager” button to “Wine Tools”
+Remove the “Command Prompt” button (which does not work) from “Wine Tools”
+
+
+1.9.0
+
+Added a confirmation dialog for the “Delete” function
+Fixed the incorrect positioning of the “Run” button in “List View”
